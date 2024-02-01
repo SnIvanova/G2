@@ -83,6 +83,10 @@ if (isset($_SESSION['full_name']) && isset($_SESSION['phone_number']) && isset($
                                 <li class="nav-item">
                                     <a class="nav-link" href="contact.html">Contact us</a>
                                 </li>
+                                <?php if (isset($_SESSION['file_path'])): ?>
+                                    <li><strong>File Attachment:</strong> <a href="<?php echo $_SESSION['file_path']; ?>"
+                                            target="_blank">Download File</a></li>
+                                <?php endif; ?>
                             </ul>
                             <div class="user_option">
                                 <a href="">

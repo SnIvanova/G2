@@ -92,7 +92,7 @@
           <div class="row">
             <div class="col-md-9 mx-auto">
               <div class="contact-form">
-                <form action="gestione.php" method="post">
+                <form action="gestione.php" method="post" enctype="multipart/form-data">
                   <div>
                     <input type="text" name="full_name" placeholder="Full Name " />
                   </div>
@@ -105,8 +105,14 @@
                   <div>
                     <input type="text" name="message" placeholder="Message" class="input_message" />
                   </div>
+                  <div>
+                    <label for="file">File Attachment:</label>
+                    <input type="file" name="file" id="file">
+                  </div>
                   <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn_on-hover">Send</button>
+                    <button type="submit" class="btn_on-hover">
+                      Send
+                    </button>
                   </div>
                 </form>
               </div>
