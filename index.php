@@ -37,7 +37,7 @@
     <header class="header_section">
       <div class="container-fluid">
         <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
-          <a class="navbar-brand" href="index.html">
+          <a class="navbar-brand" href="index.php">
             <span> SnIvanova </span>
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -49,25 +49,29 @@
             <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
               <ul class="navbar-nav">
                 <li class="nav-item active">
-                  <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="about.html"> About </a>
+                  <a class="nav-link" href="#"> About </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="#"> Portfolio </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="do.html"> What we do </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="portfolio.html"> Portfolio </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="contact.html">Contact us</a>
+                  <a class="nav-link" href="index.php">Contact us</a>
                 </li>
               </ul>
               <div class="user_option">
-                <a href="">
-                  <img src="images/user.png" alt="" />
-                </a>
+                <?php if (isset($_SESSION['user'])): ?>
+                  <form action="" method="post">
+                    <button type="submit" name="logout_button" class="nav-link btn-link">Logout</button>
+                  </form>
+                <?php else: ?>
+                  <a href="login.php">
+                    <img src="images/user.png" alt="" />
+                  </a>
+                <?php endif; ?>
                 <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
                   <button class="btn my-2 my-sm-0 nav_search-btn" type="submit"></button>
                 </form>
