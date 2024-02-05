@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-$userLoggedIn = isset($_SESSION['user']);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $formSubmission = array(

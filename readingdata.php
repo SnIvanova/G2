@@ -3,10 +3,12 @@ session_start();
 
 $userLoggedIn = isset($_SESSION['user']);
 
-if (!isset($_SESSION['user'])) {
+if (isset($_POST['logout_button'])) {
+    unset($_SESSION['user']);
     header("Location: login.php");
     exit();
 }
+
 if (isset($_SESSION['form_submissions']) && !empty($_SESSION['form_submissions'])) {
     ?>
 
@@ -62,14 +64,12 @@ if (isset($_SESSION['form_submissions']) && !empty($_SESSION['form_submissions']
                                     <li class="nav-item">
                                         <a class="nav-link" href="#"> About </a>
                                     </li>
-
                                     <li class="nav-item">
                                         <a class="nav-link" href="#"> Portfolio </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="index.php">Contact us</a>
                                     </li>
-
                                 </ul>
                                 <div class="user_option">
                                     <?php if (isset($_SESSION['user'])): ?>
@@ -100,7 +100,6 @@ if (isset($_SESSION['form_submissions']) && !empty($_SESSION['form_submissions']
                     <p></p>
                 </div>
 
-
                 <?php
                 foreach ($_SESSION['form_submissions'] as $index => $formSubmission) {
                     $full_name = $formSubmission['full_name'];
@@ -117,7 +116,6 @@ if (isset($_SESSION['form_submissions']) && !empty($_SESSION['form_submissions']
                                     <div class="contact-form">
                                         <form action="" method="post">
                                             <ul>
-
                                                 <div>
                                                     <li><strong>Full Name:</strong>
                                                         <?php echo $full_name; ?>
@@ -144,27 +142,19 @@ if (isset($_SESSION['form_submissions']) && !empty($_SESSION['form_submissions']
                                                         <li><strong>File Attachment:</strong> <a href="<?php echo $file_path; ?>"
                                                                 target="_blank">Download File</a></li>
                                                     </div>
-
-                                                <?php endif; ?>
-                                                <?php if (isset($_SESSION['file_path'])): ?>
-                                                    <li><strong>File Attachment:</strong> <a
-                                                            href="<?php echo $_SESSION['file_path']; ?>" target="_blank">Download
-                                                            File</a></li>
                                                 <?php endif; ?>
                                             </ul>
-
-
-                                    </div>
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                </div>
                 <?php
                 }
-
                 ?>
+
             <form action="" method="post">
                 <button class="bn31" type="submit" name="clear_data_button">
                     <span class="bn31span">Clear Data</span>
@@ -172,17 +162,17 @@ if (isset($_SESSION['form_submissions']) && !empty($_SESSION['form_submissions']
             </form>
 
             <?php
-
             if (isset($_POST['clear_data_button'])) {
                 unset($_SESSION['form_submissions']);
-
             }
             ?>
+
             <div class="map_img-box">
                 <img src="images/map-img.png" alt="" />
             </div>
             </div>
         </section>
+
         <!-- info section -->
         <section class="info_section">
             <div class="container">
@@ -318,12 +308,9 @@ if (isset($_SESSION['form_submissions']) && !empty($_SESSION['form_submissions']
 
     </body>
 
-
-
     </html>
     <?php
 } else {
-
     header("Location: index.php");
     exit();
 }
